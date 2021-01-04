@@ -1,5 +1,5 @@
 # xvpn
-Linux Bash Script for Express Vpn
+# Linux Bash Script for Express Vpn
 #
 #
 # ExpressVPN Linux Bash Script Menu  v.1.0
