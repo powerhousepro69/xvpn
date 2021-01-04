@@ -1,0 +1,358 @@
+#!/bin/bash
+#
+# ExpressVPN Linux Bash Script Menu  v.1.0
+#
+# Dependencies :  ExpressVPN for linux
+#
+# Put this file in a directory in the path and enable execute bit.
+#
+# To do this from the terminal:
+#
+#    - Open Terminal
+#    - Switch to the directory that  xvpn  is in.
+#    - Enable execute bit type..    chmod +x xvpn  (only needs done once)
+#
+# If the execute bit isn't enabled, this bash script won't run.
+#
+#
+# If this file isn't in the path and you are in the directory it is
+# located in...
+#
+#    enter...     ./xvpn    to run 
+#
+#
+# If the file is located in the path:
+#
+#    enter...       xvpn    to run
+#
+#
+#
+
+function status {
+	clear
+	echo ""
+	echo ""
+	expressvpn status
+}
+
+function lastconnect {
+	clear
+    	echo ""
+	echo ""
+	expressvpn connect
+}
+
+function smart {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect smart 
+}
+
+function disconnect {
+	clear
+	echo ""
+	echo ""
+	expressvpn disconnect
+}
+
+function pref {
+        clear
+        echo ""
+	echo ""        
+	expressvpn preferences
+}
+
+function nlockon {
+        clear
+        echo ""
+	echo "" 
+	expressvpn preferences set network_lock on
+}
+
+function las {
+        clear
+        echo ""
+	echo "" 
+	expressvpn list all
+	echo "" 
+	echo ""
+	echo "  Scroll up with mouse to find what server you want."
+	echo "  Then scoll back down to enter it."
+	echo "  If you do not enter anything," 
+	echo "  your last connection will be used."
+	echo "" 
+	echo ""
+	read -p "  Enter Sever Code and Press ENTER :  " svrcode 
+        expressvpn connect $svrcode 
+}
+
+function vernum {
+        clear
+        echo ""
+	echo "" 
+	expressvpn -v
+}
+
+function nlockoff {
+        clear
+        echo ""
+	echo "" 
+	expressvpn preferences set network_lock off 
+}
+
+function enteract {
+        clear
+        echo ""
+	echo "" 
+	echo "  Enter or Paste your Activation Code Below"
+	echo "  Then Press ENTER"
+        echo "" 
+	echo ""
+	# read -p "   Activation Code:  " ac 
+        expressvpn activate $ac 
+}
+
+function dallas {
+	clear
+	echo ""
+	echo ""	
+	expressvpn connect usda 
+}
+
+function la {
+	clear
+	echo ""
+	echo ""	
+	expressvpn connect usla
+}
+
+function la2 {
+	clear
+	echo ""
+	echo ""	
+	expressvpn connect usla2
+}
+
+function ny {
+	clear
+	echo ""
+	echo ""	
+	expressvpn connect usny 
+}
+
+function sanfran {
+	clear
+	echo ""
+	echo ""	
+	expressvpn connect ussf
+}
+
+function seattle {
+	clear
+	echo ""
+	echo ""	
+	expressvpn connect usse 
+}
+
+function dc {
+	clear
+	echo ""
+	echo ""	
+	expressvpn connect uswd 
+}
+
+function amsterdam {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect nlam
+}
+
+function belgium {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect be
+}
+
+function elondon {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect ukel
+}
+
+function frankfurt {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect defr1
+}
+
+function hkong2 {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect hk2
+}
+
+function milan {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect itmi
+}
+
+function paris1 {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect frpa1
+}
+
+function switzerland2 {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect ch2
+}
+
+function toronto {
+	clear
+	echo ""
+	echo ""
+	expressvpn connect cato
+}
+
+function menu {
+clear
+echo ""
+echo "                ExpressVPN Linux Menu"
+echo "     ______________________________________________"
+echo "    |                     |                        |"
+echo "    | 1. Status           | 6. Enable Net Lock     |"
+echo "    | 2. Connect to Last  | 7. List All Servers    |"    
+echo "    | 3. Smart Connect    | 8. Version Number      |"
+echo "    | 4. Disconnect       | !. Disable Net Lock    |"
+echo "    | 5. Preferences      | $. Enter Activation    |"
+echo "    |---------------------|------------------------|"
+echo "    |         USA         |         OTHER          |"
+echo "    |---------------------|------------------------|"	
+echo "    | a. Dallas           | h. Amsterdam - NL      |"
+echo "    | b. Los Angeles      | i. Belgium             |"
+echo "    | c. Los Angeles 2    | j. East London - UK    |"
+echo "    | d. New York         | k. Frankfurt - Germany |"
+echo "    | e. San Francisco    | l. Hong Kong 2         |"
+echo "    | f. Seattle          | m. Milan - Italy       |"	
+echo "    | g. Washington DC    | n. Paris 1 - France    |"
+echo "    |---------------------| o. Switzerland 2       |"
+echo "    |       0. EXIT       | p. Toronto - Canada    |"
+echo "    |_____________________|________________________|"
+echo ""
+echo ""
+echo -en "\tEnter an Option:"
+read -n 1 option
+}
+
+
+while [ 1 ]
+do
+	menu
+	case $option in
+	0)
+	break ;;
+	1)
+	status ;;
+
+	2)
+	lastconnect ;;
+
+	3)
+	smart ;;
+
+	4)
+	disconnect ;;
+
+	5)
+	pref ;;
+
+	6)
+	nlockon ;;
+
+	7)
+	las ;;
+
+	8)
+	vernum ;;
+
+	!)
+	nlockoff ;;
+
+	$)
+	enteract ;;
+
+	a)
+	dallas ;;
+
+	b)
+	la ;;
+
+	c)
+	la2 ;;
+
+	d)
+	ny ;;
+
+	e)
+	sanfran ;;
+
+	f)
+	seattle ;;
+
+	g)
+	dc ;;
+
+	h)
+	amsterdam ;;
+
+	i)
+	belgium ;;
+
+	j)
+	elondon ;;
+
+	k)
+	frankfurt ;;
+
+	l)
+	hkong2 ;;
+
+	m)
+	milan ;;
+
+	n)
+	paris1 ;;
+
+	o)
+	switzerland2 ;;
+
+	p)
+	toronto ;;
+
+
+	*)
+	clear
+	echo ""
+	echo ""
+	echo ""	
+	echo "                        Invalid Selection";;
+	esac
+	echo -en "\n\n\t\t\tHit any key to continue"
+	read -n 1 line
+done
+clear
+
+
+
+
