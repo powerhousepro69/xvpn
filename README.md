@@ -17,8 +17,7 @@ Linux Bash Script for Express Vpn
 # If the execute bit isn't enabled, this bash script won't run.
 #
 #
-# If this file isn't in the path and you are in the directory it is
-# located in...
+# If this file isn't in the path and you are in the directory it is located in...
 #
 #    enter...     ./xvpn    to run 
 #
