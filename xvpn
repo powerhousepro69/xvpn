@@ -1,8 +1,15 @@
 #!/bin/bash
 #
-# ExpressVPN Linux Bash Script Menu  v.1.0
+#  Menu for ExpressVPN with Tray Icon v1.1
 #
-# Dependencies :  ExpressVPN for linux
+#     Requirements:  - ExpressVPN CLI App
+#                    - Included python script   [vpn_notificaton.py]   
+#
+#     READ !!   **** - If you don't place  [vpn_notification.py]
+#                      in  ~/bin/   you will need to edit 3 lines in this script.
+#                      Instructions at  LINE 275
+#
+# 
 #
 # Put this file in a directory in the path and enable execute bit.
 #
@@ -10,20 +17,16 @@
 #
 #    - Open Terminal
 #    - Switch to the directory that  xvpn  is in.
-#    - Enable execute bit type..    chmod +x xvpn  (only needs done once)
+#    - Enable execute bit type..    chmod +x xvpn 
 #
 # If the execute bit isn't enabled, this bash script won't run.
 #
 #
 # If this file isn't in the path and you are in the directory it is
-# located in...
-#
-#    enter...     ./xvpn    to run 
+# located in... enter...     ./xvpn    to run 
 #
 #
-# If the file is located in the path:
-#
-#    enter...       xvpn    to run
+# If the file is located in your path:      enter...       xvpn    to run
 #
 #
 #
@@ -33,6 +36,8 @@ function status {
 	echo ""
 	echo ""
 	expressvpn status
+        echo -en "\n\n\t\t\tHit any key to continue"
+	read -n 1 line
 }
 
 function lastconnect {
@@ -46,7 +51,7 @@ function smart {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect smart 
+	expressvpn connect smart
 }
 
 function disconnect {
@@ -54,6 +59,7 @@ function disconnect {
 	echo ""
 	echo ""
 	expressvpn disconnect
+	notify-send 'VPN Tray Icon - SHUTDOWN'
 }
 
 function pref {
@@ -61,6 +67,8 @@ function pref {
         echo ""
 	echo ""        
 	expressvpn preferences
+	echo -en "\n\n\t\t\tHit any key to continue"
+	read -n 1 line
 }
 
 function nlockon {
@@ -68,6 +76,8 @@ function nlockon {
         echo ""
 	echo "" 
 	expressvpn preferences set network_lock on
+	echo -en "\n\n\t\t\tHit any key to continue"
+	read -n 1 line
 }
 
 function las {
@@ -84,7 +94,7 @@ function las {
 	echo "" 
 	echo ""
 	read -p "  Enter Sever Code and Press ENTER :  " svrcode 
-        expressvpn connect $svrcode 
+        expressvpn connect $svrcode
 }
 
 function vernum {
@@ -92,6 +102,8 @@ function vernum {
         echo ""
 	echo "" 
 	expressvpn -v
+	echo -en "\n\n\t\t\tHit any key to continue"
+	read -n 1 line
 }
 
 function nlockoff {
@@ -99,6 +111,8 @@ function nlockoff {
         echo ""
 	echo "" 
 	expressvpn preferences set network_lock off 
+	echo -en "\n\n\t\t\tHit any key to continue"
+	read -n 1 line
 }
 
 function enteract {
@@ -109,7 +123,7 @@ function enteract {
 	echo "  Then Press ENTER"
         echo "" 
 	echo ""
-	# read -p "   Activation Code:  " ac 
+    # read -p "   Activation Code:  " ac 
         expressvpn activate $ac 
 }
 
@@ -117,8 +131,9 @@ function dallas {
 	clear
 	echo ""
 	echo ""	
-	expressvpn connect usda 
+        expressvpn connect usda 
 }
+
 
 function la {
 	clear
@@ -138,8 +153,9 @@ function ny {
 	clear
 	echo ""
 	echo ""	
-	expressvpn connect usny 
+	expressvpn connect usny
 }
+
 
 function sanfran {
 	clear
@@ -155,12 +171,14 @@ function seattle {
 	expressvpn connect usse 
 }
 
+
 function dc {
 	clear
 	echo ""
 	echo ""	
 	expressvpn connect uswd 
 }
+
 
 function amsterdam {
 	clear
@@ -228,8 +246,8 @@ function toronto {
 function menu {
 clear
 echo ""
-echo "                ExpressVPN Linux Menu"
-echo "     ______________________________________________"
+echo "           Menu for ExpressVPN with Tray Icon       "
+echo "     ______________________________________________ "
 echo "    |                     |                        |"
 echo "    | 1. Status           | 6. Enable Net Lock     |"
 echo "    | 2. Connect to Last  | 7. List All Servers    |"    
@@ -249,8 +267,32 @@ echo "    | g. Washington DC    | n. Paris 1 - France    |"
 echo "    |---------------------| o. Switzerland 2       |"
 echo "    |       0. EXIT       | p. Toronto - Canada    |"
 echo "    |_____________________|________________________|"
-echo ""
-echo ""
+
+#############################################################################
+########## Code that checks if VPN Connection is Active.
+########## If VPN is Active, it loads the tray icon if not aleady loaded.
+########## When VPN gets disconnected the tray icon process is killed.
+########## 
+########## If you didn't put [vpn_noyification.py] in   ~/bin  
+########## You need to change all 3 directories below to match the path
+########## of where you have put   [vpn_notificaton.py]
+
+if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
+then
+
+	if pgrep -af 'python3 /home/'$USER'/bin/vpn_notification.py' >/dev/null; then
+    		echo "        VPN Tray Icon - ACTIVE"
+	else
+		echo "        VPN Tray Icon - LOADED"
+		nohup python3 ~/bin/vpn_notification.py &> /dev/null &
+		notify-send 'VPN Tray Icon - ACTIVE'	
+        fi
+else
+  	killall -q python3 ~/bin/vpn_notification.py
+	echo "        Express VPN and Tray Icon - SHUTDOWN"
+	fi
+#############################################################################
+	
 echo -en "\tEnter an Option:"
 read -n 1 option
 }
@@ -348,11 +390,10 @@ do
 	echo ""	
 	echo "                        Invalid Selection";;
 	esac
-	echo -en "\n\n\t\t\tHit any key to continue"
-	read -n 1 line
+#	echo -en "\n\n\t\t\tHit any key to continue"
+#        read -n 1 line
 done
 clear
-
 
 
 
