@@ -4,6 +4,8 @@
 # For ubuntu based system.. sudo apt-get install gir1.2-appindicator3
 # For fedora............... sudo dnf install libappindicator-gtk3
 # For other distributions, just search for any packages containing [appindicator]
+#
+# Note : you can shutdown expressvpn from this tray icon.
 
 
 import os

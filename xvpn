@@ -29,7 +29,6 @@
 # If the file is located in your path:      enter...       xvpn    to run
 #
 #
-#
 
 function status {
 	clear
@@ -268,7 +267,7 @@ echo "    |---------------------| o. Switzerland 2       |"
 echo "    |       0. EXIT       | p. Toronto - Canada    |"
 echo "    |_____________________|________________________|"
 
-#############################################################################
+#########################################################################
 ########## Code that checks if VPN Connection is Active.
 ########## If VPN is Active, it loads the tray icon if not aleady loaded.
 ########## When VPN gets disconnected the tray icon process is killed.
@@ -276,7 +275,9 @@ echo "    |_____________________|________________________|"
 ########## If you didn't put [vpn_noyification.py] in   ~/bin  
 ########## You need to change all 3 directories below to match the path
 ########## of where you have put   [vpn_notificaton.py]
-
+##########
+########## Note : you can shutdown expressvpn from the tray icon.
+#######################################################################################
 if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
 then
 
@@ -285,13 +286,13 @@ then
 	else
 		echo "        VPN Tray Icon - LOADED"
 		nohup python3 ~/bin/vpn_notification.py &> /dev/null &
-		notify-send 'VPN Tray Icon - ACTIVE'	
+		notify-send 'VPN Tray Icon - LOADED'	
         fi
 else
   	killall -q python3 ~/bin/vpn_notification.py
 	echo "        Express VPN and Tray Icon - SHUTDOWN"
 	fi
-#############################################################################
+#######################################################################################
 	
 echo -en "\tEnter an Option:"
 read -n 1 option
@@ -391,7 +392,7 @@ do
 	echo "                        Invalid Selection";;
 	esac
 #	echo -en "\n\n\t\t\tHit any key to continue"
-#        read -n 1 line
+#       read -n 1 line
 done
 clear
 
