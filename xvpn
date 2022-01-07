@@ -282,19 +282,19 @@ if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
 then
 
 	if pgrep -af 'python3 /home/'$USER'/bin/vpn_notification.py' >/dev/null; then
-    		echo "        VPN Tray Icon - ACTIVE"
+    		echo "        ExpressVPN and Tray Icon - ACTIVE"
 	else
-		echo "        VPN Tray Icon - LOADED"
+		echo "        ExpressVPN and Tray Icon - LOADED"
 		nohup python3 ~/bin/vpn_notification.py &> /dev/null &
 		notify-send 'VPN Tray Icon - LOADED'	
         fi
 else
   	killall -q python3 ~/bin/vpn_notification.py
-	echo "        Express VPN and Tray Icon - SHUTDOWN"
+	echo "        ExpressVPN and Tray Icon - SHUTDOWN"
 	fi
 #######################################################################################
 	
-echo -en "\tEnter an Option:"
+echo -en "\tEnter an Option: "
 read -n 1 option
 }
 
