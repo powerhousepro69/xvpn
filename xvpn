@@ -1,34 +1,32 @@
 #!/bin/bash
-#
+
 #  Menu for ExpressVPN with Tray Icon v1.1
-#
+
 #     Requirements:  - ExpressVPN CLI App
 #                    - Included python script   [vpn_notificaton.py]   
-#
+
 #     READ !!   **** - If you don't place  [vpn_notification.py]
 #                      in  ~/bin/   you will need to edit 3 lines in this script.
 #                      Instructions at  LINE 275
-#
-# 
-#
+ 
+#  Note : you can shutdown expressvpn from the tray icon.
+
+
 # Put this file in a directory in the path and enable execute bit.
-#
+
 # To do this from the terminal:
-#
+
 #    - Open Terminal
 #    - Switch to the directory that  xvpn  is in.
 #    - Enable execute bit type..    chmod +x xvpn 
-#
+
 # If the execute bit isn't enabled, this bash script won't run.
-#
-#
+
 # If this file isn't in the path and you are in the directory it is
 # located in... enter...     ./xvpn    to run 
-#
-#
+
 # If the file is located in your path:      enter...       xvpn    to run
-#
-#
+
 
 function status {
 	clear
@@ -267,16 +265,19 @@ echo "    |---------------------| o. Switzerland 2       |"
 echo "    |       0. EXIT       | p. Toronto - Canada    |"
 echo "    |_____________________|________________________|"
 
-#########################################################################
-########## Code that checks if VPN Connection is Active.
-########## If VPN is Active, it loads the tray icon if not aleady loaded.
-########## When VPN gets disconnected the tray icon process is killed.
-########## 
-########## If you didn't put [vpn_noyification.py] in   ~/bin  
-########## You need to change all 3 directories below to match the path
-########## of where you have put   [vpn_notificaton.py]
-##########
-########## Note : you can shutdown expressvpn from the tray icon.
+
+#   Code from Lines 282 -295 perform the following 4 tasks.  
+#      1. - A check is made to see if a VPN tunnel is Active.
+#      2. - If a VPN tunnel is Active and tray icon is already running, nothing is done. 
+#      3. - If a VPN tunnel is Active and tray icon isn't running, tray icon is loaded.
+#      4. - If no VPN tunnel exists, the tray icon process is killed.
+ 
+#  If you didn't put [vpn_notification.py] in   ~/bin  You need to change all 3 paths
+#  below to match the path of where you have put   [vpn_notificaton.py]
+
+#  The 3 Lines that would need path edits:   285, 289, 293   
+
+
 #######################################################################################
 if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
 then
