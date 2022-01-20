@@ -266,22 +266,21 @@ echo "    |       0. EXIT       | p. Toronto - Canada    |"
 echo "    |_____________________|________________________|"
 
 
-#   Code from Lines 282-296 perform the following 4 tasks.  
+#   Code from Lines 282-295 perform the following 4 tasks.  
 #      1. - A check is made to see if a VPN tunnel is Active. <line 282>
-#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 287> 
-#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 289-291>
-#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 294-295>
+#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 286> 
+#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 289-290>
+#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 293-294>
  
 #  If you didn't put [vpn_notification.py] in   ~/bin  You need to change all 3 paths
 #  below to match the path of where you have put   [vpn_notificaton.py]
 
-#  The 3 Lines that would need path edits:   285, 289, 294   
+#  The 3 Lines that would need path edits:   284, 288, 293  
 
 
 #######################################################################################
 if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
 then
-
 	if pgrep -af 'python3 /home/'$USER'/bin/vpn_notification.py' >/dev/null
         then
     		echo "        ExpressVPN and Tray Icon - ACTIVE"
