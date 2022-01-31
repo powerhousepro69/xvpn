@@ -1,38 +1,32 @@
 #!/bin/bash
 
-#  Menu for ExpressVPN with Tray Icon v1.1
+#  Menu for ExpressVPN with Tray Icon v1.1  github.com/powerhousepro69/xvpn
 
-#     Requirements:  - ExpressVPN CLI App
+#     Requirements:  - Expressvpn CLI App  <expressvpn>
 #                    - Included python script   [vpn_notificaton.py]   
 
-#     READ !!   **** - If you don't place  [vpn_notification.py]
-#                      in  ~/bin/   you will need to edit 3 lines in this script.
-#                      Instructions at  LINE 275
- 
+#       **********   Put  vpn_notificaton.py  in   ~/.config   **********
+
 #  Note : you can shutdown expressvpn from the tray icon.
 
 
-# Put this file in a directory in the path and enable execute bit.
-
-# To do this from the terminal:
+#     Put  xvpn  file wherever you want.
+#     To enable execute bit:
 
 #    - Open Terminal
 #    - Switch to the directory that  xvpn  is in.
 #    - Enable execute bit type..    chmod +x xvpn 
 
-# If the execute bit isn't enabled, this bash script won't run.
-
-# If this file isn't in the path and you are in the directory it is
-# located in... enter...     ./xvpn    to run 
-
+# If this file isn't in the path and you are in the directory it is in   ./xvpn   to run 
 # If the file is located in your path:      enter...       xvpn    to run
 
+provider_cli=expressvpn
 
 function status {
 	clear
 	echo ""
 	echo ""
-	expressvpn status
+	$provider_cli status
         echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
 }
@@ -41,21 +35,21 @@ function lastconnect {
 	clear
     	echo ""
 	echo ""
-	expressvpn connect
+	$provider_cli connect
 }
 
 function smart {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect smart
+	$provider_cli connect smart
 }
 
 function disconnect {
 	clear
 	echo ""
 	echo ""
-	expressvpn disconnect
+	$provider_cli disconnect
 	notify-send 'VPN Tray Icon - SHUTDOWN'
 }
 
@@ -63,7 +57,7 @@ function pref {
         clear
         echo ""
 	echo ""        
-	expressvpn preferences
+	$provider_cli preferences
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
 }
@@ -72,7 +66,7 @@ function nlockon {
         clear
         echo ""
 	echo "" 
-	expressvpn preferences set network_lock on
+	$provider_cli preferences set network_lock on
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
 }
@@ -81,24 +75,24 @@ function las {
         clear
         echo ""
 	echo "" 
-	expressvpn list all
+	$provider_cli list all
 	echo "" 
 	echo ""
-	echo "  Scroll up with mouse to find what server you want."
-	echo "  Then scoll back down to enter it."
-	echo "  If you do not enter anything," 
-	echo "  your last connection will be used."
+	echo "  Scroll up with mouse to find what server you want. (server code on far left)"
+	echo "  Scroll back down and enter server code."
+	echo "  " 
+	echo "  If you do not enter anything, your last connection will be used. "
 	echo "" 
-	echo ""
 	read -p "  Enter Sever Code and Press ENTER :  " svrcode 
-        expressvpn connect $svrcode
+        $provider_cli connect $svrcode
+        read -p "  Press  ENTER to continue . . ." 
 }
 
 function vernum {
         clear
         echo ""
 	echo "" 
-	expressvpn -v
+	$provider_cli -v
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
 }
@@ -107,7 +101,7 @@ function nlockoff {
         clear
         echo ""
 	echo "" 
-	expressvpn preferences set network_lock off 
+	$provider_cli preferences set network_lock off 
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
 }
@@ -121,14 +115,14 @@ function enteract {
         echo "" 
 	echo ""
     # read -p "   Activation Code:  " ac 
-        expressvpn activate $ac 
+        $provider_cli activate $ac 
 }
 
 function dallas {
 	clear
 	echo ""
 	echo ""	
-        expressvpn connect usda 
+        $provider_cli connect usda 
 }
 
 
@@ -136,21 +130,21 @@ function la {
 	clear
 	echo ""
 	echo ""	
-	expressvpn connect usla
+	$provider_cli connect usla
 }
 
 function la2 {
 	clear
 	echo ""
 	echo ""	
-	expressvpn connect usla2
+	$provider_cli connect usla2
 }
 
 function ny {
 	clear
 	echo ""
 	echo ""	
-	expressvpn connect usny
+	$provider_cli connect usny
 }
 
 
@@ -158,14 +152,14 @@ function sanfran {
 	clear
 	echo ""
 	echo ""	
-	expressvpn connect ussf
+	$provider_cli connect ussf
 }
 
 function seattle {
 	clear
 	echo ""
 	echo ""	
-	expressvpn connect usse 
+	$provider_cli connect usse 
 }
 
 
@@ -173,7 +167,7 @@ function dc {
 	clear
 	echo ""
 	echo ""	
-	expressvpn connect uswd 
+	$provider_cli connect uswd 
 }
 
 
@@ -181,63 +175,63 @@ function amsterdam {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect nlam
+	$provider_cli connect nlam
 }
 
 function belgium {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect be
+	$provider_cli connect be
 }
 
 function elondon {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect ukel
+	$provider_cli connect ukel
 }
 
 function frankfurt {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect defr1
+	$provider_cli connect defr1
 }
 
 function hkong2 {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect hk2
+	$provider_cli connect hk2
 }
 
 function milan {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect itmi
+	$provider_cli connect itmi
 }
 
 function paris1 {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect frpa1
+	$provider_cli connect frpa1
 }
 
 function switzerland2 {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect ch2
+	$provider_cli connect ch2
 }
 
 function toronto {
 	clear
 	echo ""
 	echo ""
-	expressvpn connect cato
+	$provider_cli connect cato
 }
 
 function menu {
@@ -266,31 +260,19 @@ echo "    |       0. EXIT       | p. Toronto - Canada    |"
 echo "    |_____________________|________________________|"
 
 
-#   Code from Lines 282-295 perform the following 4 tasks.  
-#      1. - A check is made to see if a VPN tunnel is Active. <line 282>
-#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 286> 
-#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 288-290>
-#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 293-294>
- 
-#  If you didn't put [vpn_notification.py] in   ~/bin  You need to change all 3 paths
-#  below to match the path of where you have put   [vpn_notificaton.py]
-
-#  The 3 Lines that would need path edits:   284, 288, 293  
-
-
 #######################################################################################
 if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
 then
-	if pgrep -af 'python3 /home/'$USER'/bin/vpn_notification.py' >/dev/null
+	if pgrep -af 'python3 /home/'$USER'/.config/vpn_notification.py' >/dev/null
         then
     		echo "        ExpressVPN and Tray Icon - ACTIVE"
 	else
-		nohup python3 ~/bin/vpn_notification.py &> /dev/null &
+		nohup python3 ~/.config/vpn_notification.py &> /dev/null &
 		notify-send 'VPN Tray Icon - LOADED'
 		echo "        ExpressVPN and Tray Icon - LOADED"	
         fi
 else
-  	killall -q python3 ~/bin/vpn_notification.py
+  	killall -q python3 ~/.config/vpn_notification.py
 	echo "        ExpressVPN and Tray Icon - SHUTDOWN"
 	fi
 #######################################################################################
@@ -393,7 +375,7 @@ do
 	echo "                        Invalid Selection";;
 	esac
 
-#  Uncomment the 2 lines below to see all ExpressVPN messages.
+#  Uncomment the 2 lines below to see all expressvpn messages.
 
 #       echo -en "\n\n\t\t\tHit any key to continue"
 #       read -n 1 line
