@@ -261,7 +261,7 @@ echo "    |_____________________|________________________|"
 
 
 
-#   Code from Lines 273-286 perform the following 4 tasks.  
+#   Code from Lines 273-286 perform the following 4 tasks. (comment out Lines 273-286 to remove tray icon feature.)
 #   The 1st <if> checks for vpn tunnel.   The 2nd <if> cheecks if tray notification is running.
 
 #      1. - A check is made to see if a VPN tunnel is Active. <line 273>
