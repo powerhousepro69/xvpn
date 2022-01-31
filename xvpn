@@ -260,6 +260,15 @@ echo "    |       0. EXIT       | p. Toronto - Canada    |"
 echo "    |_____________________|________________________|"
 
 
+
+#   Code from Lines 273-286 perform the following 4 tasks.  
+#   The 1st <if> checks for vpn tunnel.   The 2nd <if> cheecks if tray notification is running.
+
+#      1. - A check is made to see if a VPN tunnel is Active. <line 273>
+#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 277> 
+#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 279-281>
+#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 284-285>
+
 #######################################################################################
 if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
 then
