@@ -18,5 +18,5 @@ To enable execute bit:
      - Enable execute bit type..    chmod +x xvpn 
 
 
-If this file isn't in the path and you are in the directory it is in   ./xvpn   to run 
+If this file isn't in the path and you are in the directory it is in   ./xvpn   to run....
 If the file is located in your path:      enter...       xvpn    to run
