@@ -38,13 +38,6 @@ function lastconnect {
 	$provider_cli connect
 }
 
-function smart {
-	clear
-	echo
-	echo
-	$provider_cli connect smart
-}
-
 function disconnect {
 	clear
 	echo
@@ -153,13 +146,13 @@ echo "    |_____________________|________________________|"
 
 
 
-#   Code from Lines 165-178 perform the following 4 tasks. (comment out Lines 165-178 to remove tray icon feature.)
+#   Code from Lines 158-171 perform the following 4 tasks. (comment out Lines 158-171 to remove tray icon feature.)
 #   The 1st <if> checks for vpn tunnel.   The 2nd <if> cheecks if tray icon is running.
 
-#      1. - A check is made to see if a VPN tunnel is Active. <line 165>
-#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 169> 
-#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 171-173>
-#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 176-177>
+#      1. - A check is made to see if a VPN tunnel is Active. <line 158>
+#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 162> 
+#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 164-166>
+#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 169-170>
 
 #######################################################################################
 if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
@@ -196,8 +189,8 @@ do
 	lastconnect ;;
 
 	3)
-	smart ;;
-
+	svrconnect "smart" ;;
+	
 	4)
 	disconnect ;;
 
