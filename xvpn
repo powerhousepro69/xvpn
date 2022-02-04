@@ -24,8 +24,8 @@ provider_cli=expressvpn
 
 function status {
 	clear
-	echo ""
-	echo ""
+	echo
+	echo
 	$provider_cli status
         echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -33,30 +33,30 @@ function status {
 
 function lastconnect {
 	clear
-    	echo ""
-	echo ""
+    	echo
+	echo
 	$provider_cli connect
 }
 
 function smart {
 	clear
-	echo ""
-	echo ""
+	echo
+	echo
 	$provider_cli connect smart
 }
 
 function disconnect {
 	clear
-	echo ""
-	echo ""
+	echo
+	echo
 	$provider_cli disconnect
 	notify-send 'VPN Tray Icon - SHUTDOWN'
 }
 
 function pref {
         clear
-        echo ""
-	echo ""        
+        echo
+	echo        
 	$provider_cli preferences
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -64,8 +64,8 @@ function pref {
 
 function nlockon {
         clear
-        echo ""
-	echo "" 
+        echo
+	echo 
 	$provider_cli preferences set network_lock on
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -73,16 +73,16 @@ function nlockon {
 
 function las {
         clear
-        echo ""
-	echo "" 
+        echo
+	echo 
 	$provider_cli list all
-	echo "" 
-	echo ""
+	echo 
+	echo
 	echo "  Scroll up with mouse to find what server you want. (server code on far left)"
 	echo "  Scroll back down and enter server code."
-	echo "  " 
+	echo 
 	echo "  If you do not enter anything, your last connection will be used. "
-	echo "" 
+	echo 
 	read -p "  Enter Sever Code and Press ENTER :  " svrcode 
         $provider_cli connect $svrcode
         read -p "  Press  ENTER to continue . . ." 
@@ -90,8 +90,8 @@ function las {
 
 function vernum {
         clear
-        echo ""
-	echo "" 
+        echo
+	echo 
 	$provider_cli -v
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -99,8 +99,8 @@ function vernum {
 
 function nlockoff {
         clear
-        echo ""
-	echo "" 
+        echo
+	echo 
 	$provider_cli preferences set network_lock off 
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -108,12 +108,12 @@ function nlockoff {
 
 function enteract {
         clear
-        echo ""
-	echo "" 
+        echo 
+	echo  
 	echo "  Enter or Paste your Activation Code Below"
 	echo "  Then Press ENTER"
-        echo "" 
-	echo ""
+        echo  
+	echo 
     # read -p "   Activation Code:  " ac 
         $provider_cli activate $ac 
 }
@@ -128,7 +128,7 @@ function svrconnect {
 
 function menu {
 clear
-echo ""
+echo
 echo "           Menu for ExpressVPN with Tray Icon       "
 echo "     ______________________________________________ "
 echo "    |                     |                        |"
