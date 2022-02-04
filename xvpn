@@ -118,121 +118,13 @@ function enteract {
         $provider_cli activate $ac 
 }
 
-function dallas {
-	clear
-	echo ""
-	echo ""	
-        $provider_cli connect usda 
+function svrconnect {
+         clear -x    # (keeps history)
+         echo
+         echo
+         $provider_cli connect "$1"
 }
 
-
-function la {
-	clear
-	echo ""
-	echo ""	
-	$provider_cli connect usla
-}
-
-function la2 {
-	clear
-	echo ""
-	echo ""	
-	$provider_cli connect usla2
-}
-
-function ny {
-	clear
-	echo ""
-	echo ""	
-	$provider_cli connect usny
-}
-
-
-function sanfran {
-	clear
-	echo ""
-	echo ""	
-	$provider_cli connect ussf
-}
-
-function seattle {
-	clear
-	echo ""
-	echo ""	
-	$provider_cli connect usse 
-}
-
-
-function dc {
-	clear
-	echo ""
-	echo ""	
-	$provider_cli connect uswd 
-}
-
-
-function amsterdam {
-	clear
-	echo ""
-	echo ""
-	$provider_cli connect nlam
-}
-
-function belgium {
-	clear
-	echo ""
-	echo ""
-	$provider_cli connect be
-}
-
-function elondon {
-	clear
-	echo ""
-	echo ""
-	$provider_cli connect ukel
-}
-
-function frankfurt {
-	clear
-	echo ""
-	echo ""
-	$provider_cli connect defr1
-}
-
-function hkong2 {
-	clear
-	echo ""
-	echo ""
-	$provider_cli connect hk2
-}
-
-function milan {
-	clear
-	echo ""
-	echo ""
-	$provider_cli connect itmi
-}
-
-function paris1 {
-	clear
-	echo ""
-	echo ""
-	$provider_cli connect frpa1
-}
-
-function switzerland2 {
-	clear
-	echo ""
-	echo ""
-	$provider_cli connect ch2
-}
-
-function toronto {
-	clear
-	echo ""
-	echo ""
-	$provider_cli connect cato
-}
 
 function menu {
 clear
@@ -261,13 +153,13 @@ echo "    |_____________________|________________________|"
 
 
 
-#   Code from Lines 273-286 perform the following 4 tasks. (comment out Lines 273-286 to remove tray icon feature.)
+#   Code from Lines 165-178 perform the following 4 tasks. (comment out Lines 165-178 to remove tray icon feature.)
 #   The 1st <if> checks for vpn tunnel.   The 2nd <if> cheecks if tray icon is running.
 
-#      1. - A check is made to see if a VPN tunnel is Active. <line 273>
-#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 277> 
-#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 279-281>
-#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 284-285>
+#      1. - A check is made to see if a VPN tunnel is Active. <line 165>
+#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 169> 
+#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 171-173>
+#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 176-177>
 
 #######################################################################################
 if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
@@ -328,52 +220,52 @@ do
 	enteract ;;
 
 	a)
-	dallas ;;
+	svrconnect "usda" ;;
 
 	b)
-	la ;;
+	svrconnect "usla" ;;
 
 	c)
-	la2 ;;
+	svrconnect "usla2" ;;
 
 	d)
-	ny ;;
+	svrconnect "usny" ;;
 
 	e)
-	sanfran ;;
+	svrconnect "ussf" ;;
 
 	f)
-	seattle ;;
+	svrconnect "usse" ;;
 
 	g)
-	dc ;;
+	svrconnect "uswd" ;;
 
 	h)
-	amsterdam ;;
+	svrconnect "nlam" ;;
 
 	i)
-	belgium ;;
+	svrconnect "be" ;;
 
 	j)
-	elondon ;;
+	svrconnect "ukel" ;;
 
 	k)
-	frankfurt ;;
+	svrconnect "defr1" ;;
 
 	l)
-	hkong2 ;;
+	svrconnect "hk2" ;;
 
 	m)
-	milan ;;
+	svrconnect "itmi" ;;
 
 	n)
-	paris1 ;;
+	svrconnect "frpa1" ;;
 
 	o)
-	switzerland2 ;;
+	svrconnect "ch2" ;;
 
 	p)
-	toronto ;;
+	svrconnect "cato" ;;
 
 
 	*)
@@ -386,8 +278,9 @@ do
 
 #  Uncomment the 2 lines below to see all expressvpn messages.
 
-#       echo -en "\n\n\t\t\tHit any key to continue"
-#       read -n 1 line
+# echo -en "\n\n\t\t\tHit any key to continue"
+#read -n 1 line
+
 done
 clear
 
