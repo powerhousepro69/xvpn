@@ -269,7 +269,9 @@ do
 	echo "                        Invalid Selection";;
 	esac
 
-#  Uncomment the 2 lines below to see all expressvpn messages.
+ sleep .35
+
+#  Uncomment the 2 lines below to see expressvpn connect messages with pause.
 
 #    echo -en "\n\n\t\t\tHit any key to continue"
 #    read -n 1 line
