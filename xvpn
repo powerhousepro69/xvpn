@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#  Menu for ExpressVPN with Tray Icon v1.1  github.com/powerhousepro69/xvpn
+#  Menu for ExpressVPN with Tray Icon v1.2  github.com/powerhousepro69/xvpn
 
 #     Requirements:  - Expressvpn CLI App  <expressvpn>
 #                    - Included python script   [vpn_notificaton.py]   
