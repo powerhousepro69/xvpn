@@ -122,7 +122,7 @@ function svrconnect {
 function menu {
 clear
 echo
-echo "           Menu for ExpressVPN with Tray Icon       "
+echo -e "\033[97;1;40m           Menu for ExpressVPN with Tray Icon           \033[0m"
 echo "     ______________________________________________ "
 echo "    |                     |                        |"
 echo "    | 1. Status           | 6. Enable Net Lock     |"
