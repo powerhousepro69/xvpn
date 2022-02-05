@@ -140,8 +140,8 @@ echo "    | d. New York         | k. Frankfurt - Germany |"
 echo "    | e. San Francisco    | l. Hong Kong 2         |"
 echo "    | f. Seattle          | m. Milan - Italy       |"	
 echo "    | g. Washington DC    | n. Paris 1 - France    |"
-echo "    |                     | o. Switzerland 2       |"
-echo "    | 0. EXIT             | p. Toronto - Canada    |"
+echo "    |_____________________| o. Switzerland 2       |"
+echo -e "    |\033[35;40m 0. Quit xvpn        \033[0m| p. Toronto - Canada    |"
 echo "    |_____________________|________________________|"
 
 
