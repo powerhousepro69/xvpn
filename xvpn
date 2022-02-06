@@ -155,18 +155,21 @@ echo "    |______________________________________________|"
 #      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 169-170>
 
 #######################################################################################
-if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
+if ifconfig tun0 2>/dev/null | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
 then
 	if pgrep -af 'python3 /home/'$USER'/.config/vpn_notification.py' >/dev/null
         then
+    		echo
     		echo -e "        ExpressVPN and Tray Icon - \033[93;1;40m ACTIVE \033[0m"
 	else
 		nohup python3 ~/.config/vpn_notification.py &> /dev/null &
 		notify-send 'VPN Tray Icon - LOADED'
+		echo
 		echo -e "        ExpressVPN and Tray Icon - \033[93;1;40m ACTIVE \033[0m"	
         fi
 else
   	killall -q python3 ~/.config/vpn_notification.py
+	echo
 	echo -e "        ExpressVPN and Tray Icon - \033[31;1;5;40m SHUTDOWN \033[0m"
 	fi
 #######################################################################################
