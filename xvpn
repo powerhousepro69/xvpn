@@ -146,13 +146,13 @@ echo "    |______________________________________________|"
 
 
 
-#   Code from Lines 158-171 perform the following 4 tasks. (comment out Lines 158-171 to remove tray icon feature.)
-#   The 1st <if> checks for a vpn tunnel.   The 2nd <if> checks if tray icon is running.
+#     Code from Lines 158-174 perform the following 4 tasks. 
+#          The 1st <if> checks for a vpn tunnel.   The 2nd <if> checks if tray icon is running.
 
 #      1. - A check is made to see if a VPN tunnel is Active. <line 158>
-#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 162> 
-#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 164-166>
-#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 169-170>
+#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 162-163> 
+#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 165-168>
+#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 171-173>
 
 #######################################################################################
 if ifconfig tun0 2>/dev/null | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
@@ -160,17 +160,17 @@ then
 	if pgrep -af 'python3 /home/'$USER'/.config/vpn_notification.py' >/dev/null
         then
     		echo
-    		echo -e "        ExpressVPN and Tray Icon - \033[93;1;40m ACTIVE \033[0m"
+    		echo -e "        ExpressVPN and Tray Icon - \033[93;1;100m ACTIVE \033[0m"
 	else
 		nohup python3 ~/.config/vpn_notification.py &> /dev/null &
 		notify-send 'VPN Tray Icon - LOADED'
 		echo
-		echo -e "        ExpressVPN and Tray Icon - \033[93;1;40m ACTIVE \033[0m"	
+		echo -e "        ExpressVPN and Tray Icon - \033[93;1;100m ACTIVE \033[0m"	
         fi
 else
   	killall -q python3 ~/.config/vpn_notification.py
 	echo
-	echo -e "        ExpressVPN and Tray Icon - \033[31;1;5;40m SHUTDOWN \033[0m"
+	echo -e "        ExpressVPN and Tray Icon - \033[31;1;5;100m SHUTDOWN \033[0m"
 	fi
 #######################################################################################
 	
