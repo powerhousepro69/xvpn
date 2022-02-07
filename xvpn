@@ -71,7 +71,7 @@ function las {
 	$provider_cli list all
 	echo 
 	echo
-	echo "  Scroll up with mouse to find what server you want. (server code on far left)"
+	echo "  Scroll up with to find what server you want. (server code on far left)"
 	echo "  Scroll back down and enter server code."
 	echo 
 	echo "  If you do not enter anything, your last connection will be used. "
