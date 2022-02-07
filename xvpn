@@ -122,8 +122,8 @@ function svrconnect {
 function menu {
 clear
 echo
-echo -e "\033[97;1;100m           xvpn for ExpressVPN with Tray Icon           \033[0m"
-echo "     ______________________________________________ "
+echo "     ______________________________________________"
+echo -e "    |\033[97;1;100m      xvpn for ExpressVPN with Tray Icon      \033[0m|"
 echo "    |                                              |"
 echo "    | 1. Status             6. Enable Net Lock     |"
 echo "    | 2. Connect to Last    7. List All Servers    |"    
