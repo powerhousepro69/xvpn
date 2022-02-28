@@ -24,8 +24,7 @@ provider_cli=expressvpn
 
 function status {
 	clear
-	echo
-	echo
+	echo -e "\n"
 	$provider_cli status
         echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -33,23 +32,20 @@ function status {
 
 function lastconnect {
 	clear
-    	echo
-	echo
+    	echo -n "\n"
 	$provider_cli connect
 }
 
 function disconnect {
 	clear
-	echo
-	echo
+	echo -e "\n"
 	$provider_cli disconnect
 	notify-send 'VPN Tray Icon - SHUTDOWN'
 }
 
 function pref {
         clear
-        echo
-	echo        
+        echo -e "\n"       
 	$provider_cli preferences
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -57,8 +53,7 @@ function pref {
 
 function nlockon {
         clear
-        echo
-	echo 
+        echo -e "\n"
 	$provider_cli preferences set network_lock on
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -66,12 +61,11 @@ function nlockon {
 
 function las {
         clear
-        echo
-	echo 
+        echo -e "\n" 
 	$provider_cli list all
 	echo 
 	echo
-	echo "  Scroll up with to find what server you want. (server code on far left)"
+	echo "  Scroll up to find what server you want. (server code on far left)"
 	echo "  Scroll back down and enter server code."
 	echo 
 	echo "  If you do not enter anything, your last connection will be used. "
@@ -83,8 +77,7 @@ function las {
 
 function vernum {
         clear
-        echo
-	echo 
+        echo -e "\n" 
 	$provider_cli -v
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -92,8 +85,7 @@ function vernum {
 
 function nlockoff {
         clear
-        echo
-	echo 
+        echo -e "\n"
 	$provider_cli preferences set network_lock off 
 	echo -en "\n\n\t\t\tHit any key to continue"
 	read -n 1 line
@@ -101,20 +93,17 @@ function nlockoff {
 
 function enteract {
         clear
-        echo 
-	echo  
+        echo -e "\n" 
 	echo "  Enter or Paste your Activation Code Below"
 	echo "  Then Press ENTER"
-        echo  
-	echo 
+        echo -e "\n"
     # read -p "   Activation Code:  " ac 
         $provider_cli activate $ac 
 }
 
 function svrconnect {
          clear -x    # (keeps history)
-         echo
-         echo
+         echo -e "\n"
          $provider_cli connect "$1"
 }
 
@@ -147,17 +136,17 @@ echo "    |______________________________________________|"
 
 
 #     Code from Lines 158-174 perform the following 4 tasks. 
-#          The 1st <if> checks for a vpn tunnel.   The 2nd <if> checks if tray icon is running.
+#     The 1st <if> checks for a vpn tunnel.   The 2nd nested <if> checks if tray icon is running.
 
-#      1. - A check is made to see if a VPN tunnel is Active. <line 158>
-#      2. - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 162-163> 
-#      3. - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 165-168>
-#      4. - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 171-173>
+#     - A check is made to see if a VPN tunnel is Active. <line 158>
+#         - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 162-163> 
+#         - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 165-168>
+#     - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 171-173>
 
 #######################################################################################
 if ifconfig tun0 2>/dev/null | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
 then
-	if pgrep -af 'python3 /home/'$USER'/.config/vpn_notification.py' >/dev/null
+	if pgrep -af 'python3 /home/'$USER'/.config/vpn_notification.py' > /dev/null
         then
     		echo
     		echo -e "        ExpressVPN and Tray Icon - \033[93;1;100m ACTIVE \033[0m"
@@ -274,7 +263,7 @@ do
 
  sleep .35
 
-#  Uncomment the 2 lines below to see expressvpn connect messages with pause.
+#  Uncomment the 2 lines below to see expressvpn's connect messages with pause.
 
 #    echo -en "\n\n\t\t\tHit any key to continue"
 #    read -n 1 line
