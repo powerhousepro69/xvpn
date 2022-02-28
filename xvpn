@@ -135,13 +135,13 @@ echo "    |______________________________________________|"
 
 
 
-#     Code from Lines 158-174 perform the following 4 tasks. 
+#     Code from Lines 147-163 perform the following 4 tasks. 
 #     The 1st <if> checks for a vpn tunnel.   The 2nd nested <if> checks if tray icon is running.
 
-#     - A check is made to see if a VPN tunnel is Active. <line 158>
-#         - If a VPN tunnel is Active and tray icon is already running..... message shown. <line 162-163> 
-#         - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 165-168>
-#     - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 171-173>
+#     - A check is made to see if a VPN tunnel is Active. <line 147>
+#         - If a VPN tunnel is Active and tray icon is already running..... message shown. <lines 151-152> 
+#         - If a VPN tunnel is Active and tray icon isn't running..... tray icon is loaded and messages shown. <lines 154-157>
+#     - If NO VPN tunnel exists..... tray icon process is killed and message shown. <lines 160-163>
 
 #######################################################################################
 if ifconfig tun0 2>/dev/null | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
