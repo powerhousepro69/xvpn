@@ -1,7 +1,7 @@
 # xvpn
 Menu for ExpressVPN with Tray Icon
 
-  Requirements:  - Expressvpn CLI App  <expressvpn
+  Requirements:  - Expressvpn CLI App  <expressvpn>
                  - Included python script   [vpn_notificaton.py]   
 
   **********   Put  vpn_notificaton.py  in   ~/.config   **********
